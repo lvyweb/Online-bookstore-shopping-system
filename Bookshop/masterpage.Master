@@ -1,0 +1,199 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="网上书城.masterpage" Codebehind="masterpage.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head runat="server">
+	        <title></title>
+<!-- main JS libs -->
+    		
+    		<script src="./JS/jquery-1.10.0.js"></script>
+    		<script src="./JS/jquery-ui.min.js"></script>
+    		<script src="./JS/bootstrap.min.js"></script>
+    		<script src="./JS/responsive-nav.min.js"></script>
+    		<script src="./JS/nav-follow.js"></script>
+        <script language="javascript" type="text/javascript" src="../JS/flash.js"></script>  
+
+<script> 
+$(document).ready(function(){
+  $("#alertclose").click(function(){
+    $("#alertstate").slideUp("slow");
+  });
+  $("#alertcloseSM").click(function(){
+    $("#alertstateSM").slideUp("slow");
+  });
+  }
+  )
+
+</script>
+
+
+
+
+
+          
+<!-- Style CSS -->
+    		
+        	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        	
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+            <link href="./css/bootstrapstyle.css" rel="stylesheet" type="text/css"/>
+            
+            <link href="./css/style.css" rel="stylesheet" type="text/css"/>
+            
+    </head>
+	<body>
+
+<form id="form1" runat="server">
+	<asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+
+	
+  
+<div class="content " role="main">
+				
+            
+    <nav class="container navbar navbar-inverse hidden-sm hidden-xs" role="navigation">  <!--大屏幕显示-->
+      <div class="container">
+ <!--导航栏-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="">
+
+                <ul class="nav navbar-nav"><!--文字导航链接-->
+
+                    <li><a href="Default.aspx">主  页</a></li>
+
+                    <li><a href="showbook.aspx">图书浏览</a></li>
+
+                    
+                    <li><a href="search.aspx">站内找书</a></li>
+                    <li><a href="admin.aspx">管理员</a></li>
+                           
+                </ul>
+
+              </div>
+
+            <div>    <!--注册栏-->
+
+             <asp:UpdatePanel ID="UpdatePanel3" UpdateMode="Conditional" runat="server">
+
+                <ContentTemplate>
+ 
+               <asp:Panel ID="userlogin" runat="server" Visible="True">            
+                
+                    <div class="form-inline "><!--form-inline保持一列聚拢 btn-group-vertical以两个为一列排列 -->
+                        <asp:TextBox ID="username" class="form-control navbar-btn input-sm" runat="server" TextMode="SingleLine" placeholder="请输入用户名"></asp:TextBox>
+                        <asp:TextBox ID="password" class="form-control navbar-btn input-sm" runat="server" TextMode="Password" placeholder="请输入密码"></asp:TextBox>         
+                        <asp:button  ID="login_button" Text="登录" class="btn btn-default btn-primary btn-sm loginin" runat="server" OnClick="login_button_Click" />
+                        <asp:button  ID="regist_button" Text="注册" class="btn btn-default btn-primary btn-sm" runat="server" OnClick="regist_button_Click" />
+                        <!--  <asp:LinkButton ID="forgetpass" runat="server" CssClass="navbar-link" OnClick="forgetpass_Click">忘记密码？</asp:LinkButton>  -->
+                    </div>
+                 	
+                </asp:Panel>            
+            
+                <asp:Panel ID="login_success" runat="server" Visible="False">
+<ul class="nav navbar-nav">
+                     <li><asp:LinkButton ID="welcome" runat="server" ></asp:LinkButton></li> <!--label不能使用bootstrap样式-->
+                    <li><a href="information.aspx">查看个人资料</a></li>
+                    <li><a href="shopping_car.aspx">去我的购物车</a></li>
+                    <li><a href="change_password.aspx">更改密码</a></li>
+                    <li><asp:LinkButton ID="LinkButton1" CssClass="navbar-link" runat="server" onclick="OutLogin_Click">注销</asp:LinkButton></li>
+</ul>
+                </asp:Panel>       
+                </ContentTemplate>    
+            </asp:UpdatePanel>
+                </div> <!--用户登录 大窗口 hidden-sm hidden-xs pull-right-->                                              
+      </div>
+        <!-- /.container -->
+    </nav>
+<div class="hidden-md hidden-lg">   <!--手机小屏幕显示-->
+
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="topsearch"> <!--上方搜索栏-->
+  <div class="row"><!--缩小的导航栏-->
+<div class="form-inline ">
+<a class="navbar-brand" href="./default.aspx">媛的书城</a>
+
+<div class="col-xs-5 col-sm-8"><asp:TextBox ID="navbooksearch" class="navbar-btn input-sm navsearch col-xs-12" runat="server" TextMode="SingleLine" placeholder="寻找好书"></asp:TextBox></div>
+     <div class="col-xs-2">
+    <asp:LinkButton ID="searchbutton" CssClass="btn btn-default navbar-btn btn-primary btn-sm" runat="server" Text="搜索" onclick="searchbutton_Click" /></div></div>
+      </div>
+      </nav>
+
+      <nav class="navbar navbar-inverse navbar-fixed-bottom" role="footernav"> <!--下方显示栏-->
+
+<ul class="list-inline  nav-justified">
+  
+    <asp:Panel ID="SM_unlogin" runat="server" Visible="True">
+
+            	<li><a  href="Default.aspx"><span class="glyphicon glyphicon-home btn-lg"> </span><p class="bottomnavp">主  页</p></a></li>
+            	<li><a  href="shopping_car.aspx"><span class="glyphicon glyphicon-shopping-cart btn-lg"></span><p class="bottomnavp">购物车</p></a></li>
+            	<li><a  href="showbook.aspx"><span class="glyphicon glyphicon-user btn-lg"></span><p class="bottomnavp">寻本好书</p></a></li>
+            	
+            	<li><a  href="login.aspx"><span class="glyphicon glyphicon-wrench btn-lg"></span><p class="bottomnavp">登  陆</p></a></li>
+     </asp:Panel>
+        <asp:Panel ID="SM_login" runat="server" Visible="False">
+                <li><a  href="Default.aspx"><span class="glyphicon glyphicon-home btn-lg"> </span><p class="bottomnavp">主  页</p></a></li>
+            	<li><a  href="shopping_car.aspx"><span class="glyphicon glyphicon-shopping-cart btn-lg"></span><p class="bottomnavp">购物车</p></a></li>
+            	<li><a  href="showbook.aspx"><span class="glyphicon glyphicon-user btn-lg"></span><p class="bottomnavp">寻本好书</p></a></li>
+            	
+            	<li><a  href="information.aspx"><span class="glyphicon glyphicon-user btn-lg"></span><p class="bottomnavp">用户信息</p></a></li>       
+     </asp:Panel>          
+            </ul>
+        
+      </nav>
+	
+</div>
+</div>
+
+
+
+
+
+               
+                    <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Conditional" runat="server" Visible="false" >
+                        <ContentTemplate>
+                            <div class="timer">现在是：<asp:Label ID="Label1" runat="server" Text="" ForeColor="#FFFF66"></asp:Label></div>
+                            <asp:Timer ID="Timer1" runat="server" Interval="1000" ontick="Timer1_Tick">
+                        </asp:Timer>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+ 
+           
+		
+            <div id="container">
+             <div id="alertstate" class="alert alert-danger alert-dismissable collapse hidden-sm hidden-xs"><!--警告框，.collapse默认折叠 alert默认警告框 后台有触发出现与自动隐藏JS-->
+             	<button type="button" id="alertclose" class="close"><!--有滑动关闭js，.close表示关闭按钮，&times;表示叉号，后面还有控制关闭什么的符号-->
+	&times;
+   </button>
+   用户名不存在或密码错误，请确认后登录！
+                </div>
+                <div class="row"><!--空模板位置-->
+                    <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Conditional" runat="server">
+                        <ContentTemplate>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder> 
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="container"></div>
+            </div>
+
+
+</div><!--content-->
+
+
+
+    <footer>
+            <div class="footerba"></div>
+            <div class="footerba2"><p>关于我们 - 版权声明 - 联系我们 - 友情链接 </p>
+        		<p >&copy;2016年4月</p></div>
+
+    </footer>  
+     </form>
+	</body>
+</html>
