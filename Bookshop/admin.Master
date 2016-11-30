@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="网上书城.admin1" Codebehind="admin.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title> 
+    <style type="text/css" >
+            body
+            {
+                border:0px;
+                margin:0px;
+                padding:0px;
+            }
+            table a
+            {
+                 text-decoration:none;	
+            }
+            .style1
+            {
+                width: 150px;
+                height: 50px;
+            }
+            .style2
+            {
+                width: 468px;
+                height: 50px;
+            }
+            .date_box
+            {
+	             border:solid 1px #000;
+	             border-radius:3px;
+	             height:30px;
+            }
+            .calender
+            {
+                 width:30px;
+                 height:30px;
+                 position:absolute;
+                 top:10px;
+                 left:170px;
+            }
+            
+        .cal_Theme1 .ajax__calendar_container
+        {
+         background-color :#BAE4FA;
+         border: solid 1px #cccccc;
+        }
+        .cal_Theme1 .ajax__calendar_header
+        {
+          background-color: #ffffff;
+         margin-bottom: 4px;
+          font-size:15px;
+        }
+        .cal_Theme1 .ajax__calendar_title, .cal_Theme1 .ajax__calendar_next, .cal_Theme1 .ajax__calendar_prev
+        {
+          color: #004080;
+          font-size:15px;
+        }
+        .cal_Theme1 .ajax__calendar_body
+        {
+	        font-size:12px;
+          background-color:#FBFD05;
+          border : solid 1px #cccccc;
+          text-align:center;
+        }
+        .cal_Theme1 .ajax__calendar_dayname
+        {
+         text-align : center;
+          font-weight: bold;
+          font-size:12px;
+        }
+        .cal_Theme1 .ajax__calendar_day
+        {
+          text-align: center;
+          font-size:12px;
+        }
+        .cal_Theme1 .ajax__calendar_hover .ajax__calendar_day, .cal_Theme1 .ajax__calendar_hover .ajax__calendar_month, .cal_Theme1 .ajax__calendar_hover .ajax__calendar_year, .cal_Theme1 .ajax__calendar_active
+        {
+          color:#fff;
+          font-weight: bold;
+          background-color:#0582FD;
+          font-size:12px;
+        }
+        .cal_Theme1 .ajax__calendar_today
+        {
+          font-weight: bold;
+          color:Red;
+          font-size:12px;
+        }
+        .cal_Theme1 .ajax__calendar_other, .cal_Theme1 .ajax__calendar_hover .ajax__calendar_today, .cal_Theme1 .ajax__calendar_hover .ajax__calendar_title
+        {
+          color: #bbbbbb;
+          font-size:12px;
+        }
+        </style>
+    </head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnableScriptGlobalization="True" runat="server">
+    </asp:ScriptManager>
+	
+    <div style="width:618px;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+	
+    </form>
+</body>
+</html>
